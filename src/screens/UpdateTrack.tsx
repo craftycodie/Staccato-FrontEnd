@@ -62,7 +62,13 @@ const UpdateTrack: FunctionComponent = () => {
             <form onSubmit={handleSubmit(async (data) => {
                 if (data.albumId === "NEW") {
                     navigate("/albums/create", {
-                        
+                        state: {
+                            track: {
+                                name: track.name,
+                                artist: track.artist,
+                                genre: track.genre
+                            }
+                        }
                     })
                 } else {
                     await staccatoClient.createTrack(data.albumId, {
